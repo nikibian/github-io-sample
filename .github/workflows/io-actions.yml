@@ -23,7 +23,7 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
     - name: Synopsys Intelligent Security Scan
       id: prescription
-      uses: synopsys-sig/intelligent-security-scan@2021.04
+      uses: synopsys-sig/intelligent-security-scan@v1
       with:
         ioServerUrl: ${{secrets.IO_SERVER_URL}}
         ioServerToken: ${{secrets.IO_SERVER_TOKEN}}
@@ -52,7 +52,7 @@ jobs:
          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL }}" --blackduck.api.token="${{ secrets.BLACKDUCK_TOKEN }}" --detect.tools="SIGNATURE_SCAN,DETECTOR"'
     - name: Synopsys Intelligent Security Scan
       if: ${{ steps.prescription.outputs.sastScan == 'true' || steps.prescription.outputs.scaScan == 'true' }}
-      uses: synopsys-sig/intelligent-security-scan@2021.04
+      uses: synopsys-sig/intelligent-security-scan@v1
       with:
         ioServerUrl: ${{ secrets.IO_SERVER_URL }}
         ioServerToken: ${{ secrets.IO_SERVER_TOKEN }}
